@@ -145,6 +145,12 @@ if(SDL2_INCLUDE_DIR)
         list(APPEND _SDL2_VERSION "${CMAKE_MATCH_1}")
     endforeach()
     string(REPLACE ";" "." SDL2_VERSION "${_SDL2_VERSION}")
+
+
+    if (${CMAKE_SYSTEM_NAME} MATCHES "FreeBSD|NetBSD|OpenBSD")
+        list(APPEND SDL2_INCLUDE_DIR "/usr/local/include")
+    endif()
+
 endif()
 
 set(SDL2_DEPENDENCIES)
